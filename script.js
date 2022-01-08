@@ -5,13 +5,13 @@ var specialChars = Array.from(" !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~");
 var lowerLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var upperLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 var passLen;
-var promptFunc = function(){
-  var passLen = prompt("How long would you like your password? Pick a value between 8 and 128");
+var passLen = prompt("How long would you like your password? Pick a value between 8 and 128");
   if(passLen < 8 || passLen > 128){
     alert("You're password has to be between 8 and 128");
   }else{
     alert("You chose " + passLen);
   }
+function promptFunc(){
   
   var uppCase = window.confirm("Do you want to use uppercase letters?");
   if(uppCase){
@@ -46,6 +46,7 @@ var promptFunc = function(){
   }
 
 }
+console.log(passLen);
 
 function randomizer(){
   for(i = 0; i < passLen; i++){

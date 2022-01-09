@@ -5,14 +5,13 @@ var specialChars = Array.from(" !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~");
 var lowerLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var upperLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 var passLen;
-var passLen = prompt("How long would you like your password? Pick a value between 8 and 128");
+function promptFunc(){
+  var passLen = (prompt("How long would you like your password? Pick a value between 8 and 128"));
   if(passLen < 8 || passLen > 128){
     alert("You're password has to be between 8 and 128");
   }else{
     alert("You chose " + passLen);
   }
-function promptFunc(){
-  
   var uppCase = window.confirm("Do you want to use uppercase letters?");
   if(uppCase){
     finalPass = finalPass.concat(upperLetters);
@@ -44,22 +43,26 @@ function promptFunc(){
   }else{
     alert(`You don't want to use special characters.`);
   }
+  console.log(passLen);
 
-}
-console.log(passLen);
 
+var random = ""
 function randomizer(){
-  for(i = 0; i < passLen; i++){
-    Math.random(finalPass.toString([i]) * finalPass.length);
+    random += finalPass[Math.floor(Math.random() * finalPass.length)];
   }
-  console.log(finalPass);
+  for(i = 0; i < passLen; i++){
+    randomizer();
+  }
+  console.log(random);
+  return random;
 }
+
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
+  var password = promptFunc();
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
@@ -68,5 +71,3 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-generateBtn.addEventListener("click", promptFunc);
-generateBtn.addEventListener("click", randomizer);

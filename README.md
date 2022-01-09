@@ -14,3 +14,4 @@ Link: [Password Generator](https://themanwiththeplan-eng.github.io/8-128-char-pa
 ---
 
 ### Screenshots of Deployed Application
+![Screenshot of Application](/assets/screenshots/passgen.PNG "Screenshot of Password Generator")

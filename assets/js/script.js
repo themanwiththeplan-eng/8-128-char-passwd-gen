@@ -1,17 +1,19 @@
 // Assignment code here
 var finalPass = [];
 var nums = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-var specialChars = Array.from(" !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~");
+var specialChars = ["!", "@", "#", "$", "%", "^", "&", "*", ];
 var lowerLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var upperLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 var passLen;
 function promptFunc(){
   var passLen = (prompt("How long would you like your password? Pick a value between 8 and 128"));
   if(passLen < 8 || passLen > 128){
-    alert("You're password has to be between 8 and 128");
+    alert("Your password has to be between 8 and 128 characters")
+    return NaN;
   }else{
     alert("You chose " + passLen);
   }
+  
   var uppCase = window.confirm("Do you want to use uppercase letters?");
   if(uppCase){
     finalPass = finalPass.concat(upperLetters);

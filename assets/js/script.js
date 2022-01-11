@@ -6,10 +6,10 @@ var lowerLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", 
 var upperLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 var passLen;
 function promptFunc(){
-  var passLen = (prompt("How long would you like your password? Pick a value between 8 and 128"));
-  if(passLen < 8 || passLen > 128){
+  var passLen = parseInt(prompt("How long would you like your password? Pick a value between 8 and 128"));
+  if(passLen < 8 || passLen > 128 || !passLen){
     alert("Your password has to be between 8 and 128 characters")
-    return NaN;
+    return;
   }else{
     alert("You chose " + passLen);
   }
@@ -18,32 +18,34 @@ function promptFunc(){
   if(uppCase){
     finalPass = finalPass.concat(upperLetters);
     console.log(`finalPassword: ${finalPass}`);
-  }else{
-    alert(`You don't want any uppercase letters in your password.`);
+  }
+  if(uppCase == false){
+    alert(`You don't want any uppercase letters`);
   }
 
   var lowerCase = window.confirm(`Do you want to use lowercase letters?`);
   if(lowerCase){
     finalPass = finalPass.concat(lowerLetters);
     console.log(`finalPassword: ${finalPass}`);
-  }else{
-    alert(`You don't want any lowercase letters in your password`);
   }
-
+  if(lowerCase == false){
+    alert(`You don't want any lowercase letters`);
+  }
   var numbers = window.confirm(`Do you want to use numbers?`);
   if(numbers){
     finalPass = finalPass.concat(nums);
     console.log(`finalPass: ${finalPass}`);
-  }else{
-    alert(`You don't want numbers in your password`);
   }
-
-  var special = window.confirm(`Do you want to use special characters?`)
+  if(numbers == false){
+    alert(`You don't want numbers`);
+  }
+  var special = window.confirm(`Do you want to use special characters?`);
   if(special){
     finalPass = finalPass.concat(specialChars);
     console.log(`finalPass: ${finalPass}`);
-  }else{
-    alert(`You don't want to use special characters.`);
+  }
+  if(special == false){
+    alert(`You don't want special characters`);
   }
   console.log(passLen);
 
@@ -56,6 +58,7 @@ function randomizer(){
     randomizer();
   }
   console.log(random);
+  alert(random);
   return random;
 }
 
@@ -71,5 +74,7 @@ function writePassword() {
 
 }
 
+
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", promptFunc);
+

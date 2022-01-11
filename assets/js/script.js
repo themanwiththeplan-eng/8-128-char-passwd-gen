@@ -59,7 +59,7 @@ function randomizer(){
   }
   console.log(random);
   alert(random);
-  return random;
+  window.location.reload();
 }
 
 // Get references to the #generate element
